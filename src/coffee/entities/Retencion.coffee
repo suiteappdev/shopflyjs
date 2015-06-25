@@ -1,4 +1,4 @@
-class Barrio
+class Retencion
 	constructor  : (q, http) ->
 		@q = q;
 		@http = http;
@@ -7,7 +7,7 @@ class Barrio
 	List : () ->
 		async = @q.defer();
 		
-		@http.get @config.BASE_URL + "barrio"
+		@http.get @config.BASE_URL + "retencion"
 		.success(
 			(data, status, headers, config) -> async.resolve { data : data, status : status}
 		).error(
@@ -17,35 +17,23 @@ class Barrio
 
 		async.promise;
 
-	Barrio : (id) ->
+	Retencion : (id) ->
 		async = @q.defer();
 
-		@http.get @config.BASE_URL + "barrio/#{id}"
+		@http.get @config.BASE_URL + "retencion/#{id}"
 		.success(
 			(data, status, headers, config) -> async.resolve { data : data, status : status}
 		).error(
 			(data, status, headers, config) -> async.resolve { data : data, status : status}
 			)
 
-
-		async.promise;
-
-	BarrioByDepartamento : (id)->
-		async = @q.defer();
-
-		@http.get @config.BASE_URL + "localizacion/#{id}"
-		.success(
-			(data, status, headers, config) -> async.resolve { data : data, status : status}
-		).error(
-			(data, status, headers, config) -> async.resolve { data : data, status : status}
-			)
 
 		async.promise;
 
 	Create : (data) ->
 		async = @q.defer();
 
-		@http.post @config.BASE_URL + "barrio", data 
+		@http.post @config.BASE_URL + "retencion", data 
 		.success(
 			(data, status, headers, config) -> async.resolve { data : data, status : status}
 		).error(
@@ -57,7 +45,7 @@ class Barrio
 	Delete : (id) ->
 		async = @q.defer();
 
-		@http.delete @config.BASE_URL + "barrio/#{id}" 
+		@http.delete @config.BASE_URL + "retencion/#{id}" 
 		.success(
 			(data, status, headers, config) -> async.resolve { data : data, status : status}
 		).error(
@@ -69,7 +57,7 @@ class Barrio
 	Update : (data)->
 		async = @q.defer();
 
-		@http.put @config.BASE_URL + "barrio/#{data._id}", data 
+		@http.put @config.BASE_URL + "retencion/#{data._id}", data 
 		.success(
 			(data, status, headers, config) -> async.resolve { data : data, status : status}
 		).error(
@@ -77,4 +65,24 @@ class Barrio
 			)
 
 
+		async.promise;
+
+	Inactivo : (id)->
+		async = @q.defer();
+
+		@http.put(@config.BASE_URL + "retencion/#{id}/desactivado").success(
+			(data) -> async.resolve data
+		)
+
+		async.promise;
+
+	Activo : (id)->
+		async = @q.defer();
+
+		@http.put(@config.BASE_URL + "retencion/#{id}/activado")
+		.success(
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+		).error(
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+			)
 		async.promise;

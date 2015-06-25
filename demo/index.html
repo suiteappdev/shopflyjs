@@ -5,7 +5,18 @@
 </head>
 <body ng-controller="mainCtrl">
 <h1>API SHOPFLY</h1>
-<pre>{{dummy}}</pre>
+<h3>Barrios</h3>
+<ul>
+	<li ng-repeat="barrio in barrios">{{barrio.nombre}}</li>
+</ul>
+<h3>Bancos</h3>
+<ul>
+	<li ng-repeat="banco in bancos">{{banco.nombre}}</li>
+</ul>
+<h3>Tipos de Clientes</h3>
+<ul>
+	<li ng-repeat="tipoCliente in TipoClientes">{{tipoCliente.descripcion}}</li>
+</ul>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <script type="text/javascript" src="js/shopfly.min.js"></script>
 <script type="text/javascript" src="myApp.js"></script>
