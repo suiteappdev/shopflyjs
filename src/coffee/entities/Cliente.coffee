@@ -49,22 +49,21 @@ class Cliente
 
 		async.promise;
 
-	Update : (id, data)->
+	Update : (data)->
 		async = @q.defer();
 
-		@http.put @config.BASE_URL + "cliente/#{id}", data 
-		.success(
-			(data, status, headers, config) -> async.resolve {data : data , status : status}
-		).error((data, status, headers, config ) -> async.resolve({data:data, status:status }))
+		@http.put @config.BASE_URL + "cliente/#{data._id}", data 
+		.success((data, status, headers, config) -> async.resolve {data : data , status : status})
+		.error((data, status, headers, config ) -> async.resolve({data:data, status:status }))
 
 		async.promise;
 
 	Search : (data)->
 		async = @q.defer();
 
-		@http.get(@config.BASE_URL + "cliente/buscar", { url : @config.BASE_URL + "cliente/buscar", method : 'GET', params : data }).success(
-			(data) -> async.resolve data
-		)
+		@http.get(@config.BASE_URL + "cliente/buscar", { url : @config.BASE_URL + "cliente/buscar", method : 'GET', params : data })
+		.success((data, status, headers, config) -> async.resolve {data : data , status : status})
+		.error((data, status, headers, config ) -> async.resolve({data:data, status:status }))
 
 		async.promise;
 

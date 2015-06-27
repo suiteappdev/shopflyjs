@@ -17,6 +17,8 @@
 		_tipoContribuyente = new TipoContribuyente($q, $http);
 		_iva = new Iva($q, $http);
 		_retencion  = new Retencion($q, $http);
+		_indice  = new Indice($q, $http);
+		_plantilla  = new Plantilla($q, $http);
 
 		"Barrio" : _barrio,
 		"Banco" : _banco,
@@ -32,7 +34,9 @@
 		"DocDependencia" : _docDependencia,
 		"TipoContribuyente" : _tipoContribuyente,
 		"Iva" : _iva,
-		"Retencion" : _retencion
+		"Retencion" : _retencion,
+		"Indice" : _indice,
+		"Plantilla" : _plantilla
  	]
 )();
 

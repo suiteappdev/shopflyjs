@@ -21,6 +21,15 @@ class Empresa
 		.error((data, status, headers, config) -> async.resolve {data :data , status : status})
 
 		async.promise;
+	
+	Search : (data)->
+		async = @q.defer();
+
+		@http.get(@config.BASE_URL + "empresa/buscar", { url : @config.BASE_URL + "empresa/buscar", method : 'GET', params : data })
+		.success((data, status, headers, config) -> async.resolve {data :data , status : status})
+		.error((data, status, headers, config) -> async.resolve {data :data , status : status})
+		
+		async.promise;
 
 	Create : (data) ->
 		async = @q.defer();
@@ -43,7 +52,25 @@ class Empresa
 	Update : (data)->
 		async = @q.defer();
 
-		@http.put @config.BASE_URL + "empresa/#{id}", data 
+		@http.put @config.BASE_URL + "empresa/#{data._id}", data 
+		.success((data, status, headers, config) -> async.resolve {data :data , status : status})
+		.error((data, status, headers, config) -> async.resolve {data :data , status : status})
+
+		async.promise;
+
+	Inactivo : (id)->
+		async = @q.defer();
+
+		@http.put(@config.BASE_URL + "empresa/#{id}/desactivado")
+		.success((data, status, headers, config) -> async.resolve {data :data , status : status})
+		.error((data, status, headers, config) -> async.resolve {data :data , status : status})
+
+		async.promise;
+
+	Activo : (id)->
+		async = @q.defer();
+
+		@http.put(@config.BASE_URL + "empresa/#{id}/activado")
 		.success((data, status, headers, config) -> async.resolve {data :data , status : status})
 		.error((data, status, headers, config) -> async.resolve {data :data , status : status})
 
