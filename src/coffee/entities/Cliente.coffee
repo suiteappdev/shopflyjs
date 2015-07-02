@@ -8,9 +8,8 @@ class Cliente
 		async = @q.defer();
 		
 		@http.get @config.BASE_URL + "cliente"
-		.success(
-			(data) -> async.resolve data
-		)
+		.success((data, status, headers, config) -> async.resolve {data : data , status : status})
+		.error((data, status, headers, config ) -> async.resolve({data:data, status:status }))
 
 		async.promise;
 
@@ -18,10 +17,9 @@ class Cliente
 		async = @q.defer();
 
 		@http.get @config.BASE_URL + "cliente/#{id}"
-		.success(
-			(data) -> async.resolve data
-		)
-
+		.success((data, status, headers, config) -> async.resolve {data : data , status : status})
+		.error((data, status, headers, config ) -> async.resolve({data:data, status:status }))
+		
 		async.promise;
 
 	Create : (data) ->

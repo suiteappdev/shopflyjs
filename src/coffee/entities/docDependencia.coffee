@@ -9,8 +9,10 @@ class DocDependencia
 		
 		@http.get @config.BASE_URL + "docdependencia"
 		.success(
-			(data) -> async.resolve data
-		)
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+		).error(
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+			)
 
 		async.promise;
 
@@ -19,8 +21,10 @@ class DocDependencia
 
 		@http.get @config.BASE_URL + "docdependencia/#{id}"
 		.success(
-			(data) -> async.resolve data
-		)
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+		).error(
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+			)
 
 		async.promise;
 
@@ -29,9 +33,10 @@ class DocDependencia
 
 		@http.post @config.BASE_URL + "docdependencia", data 
 		.success(
-			(data) -> async.resolve data
-
-		)
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+		).error(
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+			)
 
 		async.promise;
 
@@ -40,9 +45,11 @@ class DocDependencia
 
 		@http.Delete @config.BASE_URL + "docdependencia/#{id}", data 
 		.success(
-			(data) -> async.resolve data
-		)
-
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+		).error(
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+			)
+		
 		async.promise;
 
 	Update : (data)->
@@ -50,7 +57,9 @@ class DocDependencia
 
 		@http.put @config.BASE_URL + "docdependencia/#{id}", data 
 		.success(
-			(data) -> async.resolve data
-		)
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+		).error(
+			(data, status, headers, config) -> async.resolve { data : data, status : status}
+			)
 
 		async.promise;

@@ -19,6 +19,7 @@
 		_retencion  = new Retencion($q, $http);
 		_indice  = new Indice($q, $http);
 		_plantilla  = new Plantilla($q, $http);
+		_ruta  = new Ruta($q, $http);
 
 		"Barrio" : _barrio,
 		"Banco" : _banco,
@@ -36,7 +37,8 @@
 		"Iva" : _iva,
 		"Retencion" : _retencion,
 		"Indice" : _indice,
-		"Plantilla" : _plantilla
+		"Plantilla" : _plantilla,
+		"Ruta"		: _ruta
  	]
 )();
 
