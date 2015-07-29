@@ -20,6 +20,11 @@
 		_indice  = new Indice($q, $http);
 		_plantilla  = new Plantilla($q, $http);
 		_ruta  = new Ruta($q, $http);
+		_docDocumento  = new DocDocumento($q, $http);
+		_estadoDocumento  = new EstadoDocumento($q, $http);
+		_usuario		 = new Usuario($q, $http);
+		_menus		 = new Menus($q, $http);
+		_rol		 = new Rol($q, $http);
 
 		"Barrio" : _barrio,
 		"Banco" : _banco,
@@ -38,7 +43,12 @@
 		"Retencion" : _retencion,
 		"Indice" : _indice,
 		"Plantilla" : _plantilla,
-		"Ruta"		: _ruta
+		"Ruta"		: _ruta,
+		"DocDocumento"		: _docDocumento,
+		"EstadoDocumento" : _estadoDocumento,
+		"Usuario" : _usuario,
+		"Menus" : _menus,
+		"Rol" : _rol
  	]
 )();
 

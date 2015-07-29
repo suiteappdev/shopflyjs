@@ -6,10 +6,14 @@ class Empresa
 
 	List : () ->
 		async = @q.defer();
-		
+
 		@http.get @config.BASE_URL + "empresa"
-		.success((data, status, headers, config) -> async.resolve {data :data , status : status})
-		.error((data, status, headers, config) -> async.resolve {data :data , status : status})
+		.success((data)->
+				async.resolve data
+			)
+		.error(()->
+					async.reject "error"
+				)
 		
 		async.promise;
 
@@ -17,8 +21,12 @@ class Empresa
 		async = @q.defer();
 
 		@http.get @config.BASE_URL + "empresa/#{id}"
-		.success((data, status, headers, config) -> async.resolve {data :data , status : status})
-		.error((data, status, headers, config) -> async.resolve {data :data , status : status})
+		.success((data)->
+				async.resolve data
+			)
+		.error(()->
+					async.reject "error"
+				)
 
 		async.promise;
 	
